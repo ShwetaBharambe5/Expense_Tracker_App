@@ -100,23 +100,23 @@ const deleteExpense = async (req, res, next) => {
 
 const getExpenses = async (req, res, next) => {
     try {
-        // const totalExpenses = await req.user.countExpenses();
-        // const expenses = await Expense.findAll({ where: { userId: req.user.id } });
-
-        // res.status(200).json({ expense: expenses });
         
         const check = req.user.ispremiumuser;
         const page = +req.query.page||1;
         const pageSize = +req.query.pageSize||10;
         const totalExpenses = await req.user.countExpenses();
-        //console.log(totalExpenses);
-  
-          const data=await UserServices.getExpenses(req,{
-           offset:(page-1)*pageSize,
-           limit: pageSize,
-           order:[['id','DESC']]
-          })
-         
+        
+        console.log('page',page);
+        console.log('pagesize',pageSize);
+
+        const data=await req.user.getExpenses({
+               offset:(page-1)*pageSize,
+               limit: pageSize,
+               order:[['id','DESC']]
+        })
+
+          console.log('data', data.length);
+
         res.status(200).json({
            allExpenses: data,
            check,

@@ -43,9 +43,11 @@ window.addEventListener("DOMContentLoaded", async () => {
 async function listExpense(data){
   try {
 
-      const parentNode=document.getElementById('allExpenselist');
+      const parentNode=document.getElementById('expenses');
       ///clear the existing expense 
       parentNode.innerHTML='';
+
+      console.log(parentNode);
 
       for(i in data){
         showUsersOnScreen(data[i]);
