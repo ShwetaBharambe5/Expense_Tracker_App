@@ -1,0 +1,10 @@
+const express = require('express');
+
+const router = express.Router();
+
+const loginController = require('../controllers/login');
+
+router.post('/login', loginController.addLoginDetails);
+router.get('/login', loginController.getLoginForm);
+
+module.exports = router;
