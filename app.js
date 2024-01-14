@@ -1,3 +1,5 @@
+//Starting of app.js file
+
 const express = require('express');
 
 const path = require('path');
