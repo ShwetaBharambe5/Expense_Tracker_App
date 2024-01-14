@@ -105,17 +105,12 @@ const getExpenses = async (req, res, next) => {
         const page = +req.query.page||1;
         const pageSize = +req.query.pageSize||10;
         const totalExpenses = await req.user.countExpenses();
-        
-        console.log('page',page);
-        console.log('pagesize',pageSize);
 
         const data=await req.user.getExpenses({
                offset:(page-1)*pageSize,
                limit: pageSize,
                order:[['id','DESC']]
         })
-
-          console.log('data', data.length);
 
         res.status(200).json({
            allExpenses: data,

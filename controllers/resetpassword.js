@@ -52,7 +52,7 @@ const forgotPassword = async (req, res, next) => {
                 subject: "reset password email", sender,
                 to: receivers,
                 htmlContent: `<h1>click on the link below to reset the password</h1><br>
-                    <a href="http://localhost:3000/password/resetpassword/${id}">Reset password</a>`,
+                    <a href="${process.env.WEBSITE}/password/resetpassword/${id}">Reset password</a>`,
             })
                 .then((result) => {
                     console.log(result);

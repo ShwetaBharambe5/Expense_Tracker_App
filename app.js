@@ -30,7 +30,7 @@ const forgotpasswordRoute = require('./routes/forgotpassword');
 
 
 
-const port = 3000;
+const port = process.env.PORT;
 
 const app = express();
 
